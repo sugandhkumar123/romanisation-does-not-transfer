@@ -1,0 +1,9 @@
+model,representation,mode,n,ndcg10,ndcg10_lo,ndcg10_hi,mrr,recall5,recall10
+stub,devanagari,dense,200,0.0138,0.0032,0.0273,0.0118,0.02,0.025
+stub,devanagari,hybrid,200,0.012,0.0022,0.0249,0.0101,0.01,0.025
+stub,iast,dense,200,0.0032,0.0,0.0095,0.0047,0.005,0.005
+stub,iast,hybrid,200,0.0019,0.0,0.0058,0.0029,0.005,0.005
+stub,hk,dense,200,0.0022,0.0,0.0065,0.0029,0.005,0.005
+stub,hk,hybrid,200,0.0,0.0,0.0,0.0021,0.0,0.0
+stub,ascii_fold,dense,200,0.0,0.0,0.0,0.0022,0.0,0.0
+stub,ascii_fold,hybrid,200,0.0,0.0,0.0,0.0019,0.0,0.0

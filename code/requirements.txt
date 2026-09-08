@@ -1,0 +1,5 @@
+indic-transliteration>=2.3
+requests>=2.31
+numpy>=1.24
+sentence-transformers>=3.0
+matplotlib>=3.7
