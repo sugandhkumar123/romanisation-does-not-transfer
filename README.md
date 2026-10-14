@@ -1,14 +1,14 @@
-# Romanisation Does Not Transfer
+# Script Representation in Cross-Lingual Retrieval over Classical Sanskrit
 
 Benchmark, corpus pipeline and results for:
 
-> Sugandh Kumar. *Romanisation Does Not Transfer: Script Representation in Cross-Lingual Retrieval over Classical Sanskrit.* ICCSI 2026, Springer IFIP AICT. (to appear)
+> Sugandh Kumar, Angelina Geetha, Vivek Yadav. *Script Representation Dominates Model Choice in Cross-Lingual Retrieval over Classical Sanskrit.* ICCSI 2026, Springer IFIP AICT. (to appear)
 
-**Finding.** Across six multilingual encoders spanning three training paradigms, Devanagari
-outperforms every romanised representation of the same Sanskrit text by 4.4x to 43.6x, and the
-best-scoring romanised configuration is statistically indistinguishable from a semantics-free
-character-hash baseline. Script representation accounts for roughly an order of magnitude more
-variance than model selection.
+**Finding.** Across six general-purpose multilingual encoders spanning three training paradigms,
+Devanagari outperforms every romanised representation of the same Sanskrit text by 4.4x to 43.6x,
+and the best-scoring romanised configuration is statistically indistinguishable from a
+semantics-free character-hash baseline. Script representation has roughly an order of magnitude
+more effect than model selection.
 
 ---
 
@@ -37,6 +37,8 @@ python code/run_retrieval.py --models e5 labse bge mpnet minilm muril \
 ```
 
 Expected corpus: **195 / 701 / 392 = 1,288 verses**, zero transliteration round-trip failures.
+The `--stub` smoke test should report nDCG@10 = 0.0138 on Devanagari, the paper's
+character-hash baseline.
 The Gita is 701 rather than 700 and the Hatha Yoga Pradipika 392 rather than 389 because of
 edition differences documented in Section 3.1 of the paper.
 
@@ -125,10 +127,10 @@ redistributed here.
 ## Citation
 
 ```bibtex
-@inproceedings{kumar2026romanisation,
-  title     = {Romanisation Does Not Transfer: Script Representation in
-               Cross-Lingual Retrieval over Classical Sanskrit},
-  author    = {Kumar, Sugandh},
+@inproceedings{kumar2026script,
+  title     = {Script Representation Dominates Model Choice in Cross-Lingual
+               Retrieval over Classical Sanskrit},
+  author    = {Kumar, Sugandh and Geetha, Angelina and Yadav, Vivek},
   booktitle = {International Conference on Computational Intelligence and
                Sustainable Innovation (ICCSI 2026)},
   series    = {IFIP Advances in Information and Communication Technology},

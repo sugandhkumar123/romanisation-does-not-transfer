@@ -5,7 +5,7 @@ import numpy as np
 
 # drawn at final printed width so lettering is >= 6 pt in print; greyscale +
 # dash pattern carry the meaning, since Springer prints figures in black and white
-FIG_W = 5.9
+FIG_W = 4.8  # LNCS text block 12.2 cm
 reps = ["Devanagari", "IAST", "Harvard-Kyoto", "ASCII-folded"]
 data = {
     "BGE-M3":    [0.248, 0.009, 0.013, 0.005],
@@ -17,7 +17,7 @@ data = {
 }
 stub = [0.0138, 0.0032, 0.0022, 0.0000]
 
-fig, ax = plt.subplots(figsize=(FIG_W, 3.2), dpi=1200)
+fig, ax = plt.subplots(figsize=(FIG_W, 2.75), dpi=1200)
 x = np.arange(len(reps)); w = 0.13
 greys = ["#111111", "#3d3d3d", "#5f5f5f", "#828282", "#a5a5a5", "#cccccc"]
 for i, (name, vals) in enumerate(data.items()):
@@ -29,16 +29,16 @@ for j, s in enumerate(stub):
             label="character-hash baseline" if j == 0 else None)
 ax.annotate("character-hash baseline\n(measured per representation)",
             xy=(x[1] + 3.1 * w, stub[1]), xytext=(1.98, 0.082),
-            color="black", fontsize=7,
+            color="black", fontsize=6.5,
             arrowprops=dict(arrowstyle="->", color="black", lw=0.8))
 
 ax.set_ylabel("nDCG@10", fontsize=8)
 ax.set_xticks(x); ax.set_xticklabels(reps, fontsize=8)
 ax.tick_params(axis="y", labelsize=7.5)
-ax.legend(fontsize=7, ncol=4, frameon=False, loc="upper right")
+ax.legend(fontsize=6.5, ncol=3, frameon=False, loc="upper right")
 ax.spines[["top", "right"]].set_visible(False)
 ax.set_ylim(0, 0.30)
 plt.tight_layout()
-plt.savefig("figure2_script_representation.png", bbox_inches="tight")
-plt.savefig("figure2_script_representation.pdf", bbox_inches="tight")
+plt.savefig("figure2_script_representation.png", bbox_inches="tight", pad_inches=0.03)
+plt.savefig("figure2_script_representation.pdf", bbox_inches="tight", pad_inches=0.03)
 print("ok")
