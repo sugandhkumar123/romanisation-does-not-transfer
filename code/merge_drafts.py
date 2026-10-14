@@ -2,7 +2,7 @@
 """Merge drafted gloss/query text into benchmark_worksheet.csv.
 
 Adds a draft_confidence column. Leaves `verified` blank on purpose: that
-column records a human check against a published translation.
+column records the first author's check against the Sanskrit source text.
 """
 import csv, sys
 from drafts_gita import GITA

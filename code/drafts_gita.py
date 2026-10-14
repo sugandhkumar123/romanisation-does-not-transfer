@@ -2,8 +2,8 @@
 """Drafted gloss_en / query_1 for the ICCSI-2026 benchmark sample.
 
 DRAFTS, NOT VERIFICATIONS. Each entry is (item_id, gloss, query, confidence).
-The `verified` column is deliberately left blank: it records a human check
-against a published translation, which is not something this file performs.
+The `verified` column is deliberately left blank: it records the first author's
+check of each draft against the Sanskrit source text, which this file does not do.
 
 Query-writing rule applied throughout: avoid reusing the verse's own
 distinctive Sanskrit-derived vocabulary, so the query tests semantic

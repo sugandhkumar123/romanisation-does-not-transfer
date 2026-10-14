@@ -58,6 +58,7 @@ minutes on GPU. Embeddings cache to `emb_cache/`, so re-runs are free.
 | `merge_drafts.py` | Merges the LLM drafts into the verification worksheet |
 | `drafts_gita.py`, `drafts_ys_hyp.py` | The **unverified** LLM drafts, released for provenance |
 | `run_retrieval.py` | The 6 x 4 x 2 evaluation grid, metrics and bootstrap CIs |
+| `robustness.py` | Paired permutation tests, per-slice consistency and query-subsampling analysis (paper Section 6.6): `python code/robustness.py results/results_per_query.csv` |
 | `mkfig.py`, `mkfig_pipeline.py` | Regenerate Figures 1 and 2 |
 
 ### `data/`
@@ -82,10 +83,11 @@ corpus that `corpus_build.py` produces.
 
 ## How the benchmark was built, precisely
 
-Glosses and queries were **drafted by a large language model** working from the Sanskrit, then
-**verified by the author against the source text**. Seven of 200 required correction (3.5%),
-three of them substantive errors of Sanskrit reading. The same pass found two scribal errors in
-the source e-texts.
+Glosses and queries were **drafted by the large language model Claude (Anthropic)** from the Sanskrit,
+then **verified by the first author against the Sanskrit source text**. Seven of 200 required correction
+(3.5%), all in the gloss: four substantive errors of Sanskrit reading (YS 2.36, 3.10, 3.14; HYP 4.76)
+and three glosses that omitted a detail their query asked about (BG 17.23, 17.27; HYP 2.10). No query
+needed rewording. The same pass found two scribal errors in the source e-texts (HYP 2.1, 4.45).
 
 This is model-assisted annotation with human verification, not independent expert annotation.
 The unverified drafts are included above so that the provenance of every item can be audited.
@@ -97,9 +99,10 @@ characters with its gold verse.
 
 ---
 
-## Two library defects worth knowing about
+## Two transliteration pitfalls worth knowing about
 
-Both would corrupt a Sanskrit retrieval evaluation silently rather than failing loudly.
+Both would corrupt a Sanskrit retrieval evaluation silently rather than failing loudly. The first is
+a defect in the library; the second is standard ITRANS behaviour that bites if steps run in the wrong order.
 
 1. **`indic-transliteration` does not implement the ITRANS explicit virama `.h`.** It renders the
    period as a danda and strands the `h`, so `vid.hdhyanAdI` becomes `vid|hdhyanādī` — a
